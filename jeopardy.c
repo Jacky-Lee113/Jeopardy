@@ -15,7 +15,6 @@
 
 // Put macros or constants here using #define
 #define BUFFER_LEN 256
-#define NUM_PLAYERS 4
 
 // Put global environment variables here
 
@@ -28,9 +27,6 @@ void show_results(player *players, int num_players);
 
 int main(int argc, char *argv[])
 {
-    // An array of 4 players, may need to be a pointer if you want it set dynamically
-    player players[NUM_PLAYERS];
-    
     // Input buffer and and commands
     char buffer[BUFFER_LEN] = { 0 };
 
@@ -39,8 +35,15 @@ int main(int argc, char *argv[])
 
     printf("Welcome to Jeopardy!\n");
     
+    int num_players;
+    printf("How many players will be playing today?\n");
+    scanf("%d", &num_players);
+    
+    // an array of players
+    player players[num_players];
+    
     // initialize each of the players in the array
-	for(int i = 0; i < 4; i++) {
+	for(int i = 0; i < num_players; i++) {
         players[i].score = 0;
         printf("Enter player name: ");
         scanf("%s", (char *) &players[i].name);
