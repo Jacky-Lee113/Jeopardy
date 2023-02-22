@@ -20,12 +20,31 @@ void initialize_game(void)
 void display_categories(void)
 {
     // print categories and dollar values for each unanswered question in questions array
+	int width = 20;
+
+    for (int i = 0; i < 3; ++i) {
+		putchar('+');
+		for (int j = 0; j < width; ++j)
+			putchar('-');
+	}
+	printf("+\n");
+
+	for(int i = 0; i < 3; i++) 
+		printf("| %-*s", width - 1, categories[i]);
+	printf("|\n");
+
+	for (int i = 0; i < 3; ++i) {
+		putchar('+');
+		for (int j = 0; j < width; ++j)
+			putchar('-');
+	}
+
 }
 
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-
+	
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
