@@ -37,7 +37,8 @@ int main(int argc, char *argv[])
     // Display the game introduction and initialize the questions
     initialize_game();
 
-    // Prompt for players names
+    printf("Enter your name: ");
+	scanf("%s", players);
     
     // initialize each of the players in the array
 
