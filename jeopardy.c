@@ -52,16 +52,18 @@ int main(void)
     // Perform an infinite loop getting command input from users until game ends
     while (true)
     {
-		char category[256];
+		char *category;
+		char answer[BUFFER_LEN] = { 0 };
 		int value;
         // Call functions from the questions and players source files
 		display_categories();
 		printf("Please type a category (case sensitive)\n");
 		scanf("%s", category);
-		printf("You have selected %s!\n", category);
 		printf("Please select the dollar amount (without the $ symbol)\n");
 		scanf("%d", &value);
 		display_question(category, value);
+		printf("\nYour answer: ");
+		scanf("%s", answer);
     }
 	
 }

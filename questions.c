@@ -15,7 +15,7 @@ void initialize_game(void)
 {
     // initialize each question struct and assign it to the questions array
 	strcpy(questions[0].category, "Biology");
-	strcpy(questions[0].question, "What is the largest organ on the human body");
+	strcpy(questions[0].question, "What is the largest organ on the human body?");
 	strcpy(questions[0].answer, "skin");
 	questions[0].value = 200;
 	questions[0].answered = false;
@@ -33,7 +33,7 @@ void initialize_game(void)
 	questions[2].answered = false;
 	
 	strcpy(questions[3].category, "Biology");
-	strcpy(questions[3].question, "What body part enlarges 10 times it's size when stimulated");
+	strcpy(questions[3].question, "What body part enlarges 10 times it's size when stimulated?");
 	strcpy(questions[3].answer, "pupil");
 	questions[3].value = 800;
 	questions[3].answered = false;
@@ -81,7 +81,7 @@ void initialize_game(void)
 	questions[10].answered = false;
 	
 	strcpy(questions[11].category, "Space");
-	strcpy(questions[11].question, "The earth tilts at _____ degree angle");
+	strcpy(questions[11].question, "The earth tilts at _____ degree angle.");
 	strcpy(questions[11].answer, "23.5");
 	questions[11].value = 800;
 	questions[11].answered = false;
@@ -108,11 +108,8 @@ void display_categories(void)
 // Displays the question for the category and dollar value
 void display_question(char *category, int value)
 {
-	for (int i = 0; i < 12; i++) {
-		if ((questions[i].category == category) && (questions[i].value == value)) {
-			printf("Question: %s (%d)\n", questions[i].question, questions[i].value);
-		}
-	}
+	printf("%s for $%d! Question is: ", category, value);
+	printf("\n%s ", questions[0].question);
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
