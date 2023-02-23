@@ -25,6 +25,7 @@ void initialize_game(void)
 	strcpy(questions[1].answer, "True");
 	questions[1].value = 400;
 	questions[1].answered = false;
+	
 	strcpy(questions[2].category, "Biology");
 	strcpy(questions[2].question, "What body part enlarges 10 times it's size when stimulated");
 	strcpy(questions[2].answer, "Pupil");
@@ -37,38 +38,26 @@ void initialize_game(void)
 void display_categories(void)
 {
     // print categories and dollar values for each unanswered question in questions array
-	char v[12][20];
+	int width = 20;
 
-	for (int i = 0; i < 12; i++) {
-		
-		if (questions[i].answered == false) {
-			
-			snprintf(v[i], 20, "%d", questions[i].value);
-			
-		} else {
-
-			strcpy(v[i], "   ");
-
-		}
-			
+    for (int i = 0; i < 3; ++i) {
+		putchar('+');
+		for (int j = 0; j < width; ++j)
+			putchar('-');
 	}
+	printf("+\n");
 
-	
-	printf("   %s   |   %s   |   %s   \n", categories[0], categories[1], categories[2]);
-	printf("  -------------------------------------------------\n");
+	for(int i = 0; i < 3; i++) 
+		printf("| %-*s", width - 1, categories[i]);
+	printf("|\n");
 
-	printf("      %s      |     %s     |         %s   \n", v[0], v[1], v[2]);
-	printf("  -------------------------------------------------\n");
-	
-	printf("      %s      |     %s     |         %s   \n", v[3], v[4], v[5]);
-	printf("  -------------------------------------------------\n");
-	
-	printf("      %s      |     %s     |         %s   \n", v[6], v[7], v[8]);
-	printf("  -------------------------------------------------\n");
-
-	printf("      %s      |     %s     |         %s   \n", v[9], v[10], v[11]);
-	printf("  -------------------------------------------------\n");
-
+	for (int i = 0; i < 3; ++i) {
+		putchar('+');
+		for (int j = 0; j < width; ++j)
+			putchar('-');
+	}
+	putchar('+');
+	printf("\n");
 }
 
 // Displays the question for the category and dollar value
