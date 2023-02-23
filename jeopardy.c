@@ -25,7 +25,7 @@ void tokenize(char *input, char **tokens);
 void show_results(player *players, int num_players);
 
 
-int main(int argc, char *argv[])
+int main(void)
 {
     // Input buffer and and commands
     char buffer[BUFFER_LEN] = { 0 };
@@ -45,19 +45,26 @@ int main(int argc, char *argv[])
     // initialize each of the players in the array
 	for(int i = 0; i < num_players; i++) {
         players[i].score = 0;
-        printf("Enter player name: ");
+		printf("Please enter your name: ");
         scanf("%s", (char *) &players[i].name);
     }
 
     // Perform an infinite loop getting command input from users until game ends
     while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
     {
+		char *category;
+		int value;
         // Call functions from the questions and players source files
 		display_categories();
-
+		printf("Please type a category (case sensitive)\n");
+		scanf("%s", category);
+		printf("You have selected %s!\n", category);
+		printf("Please select the dollar amount (without the $ symbol)\n");
+		scanf("%d", value);
+		display_question(category, value);
         // Execute the game until all questions are answered
 
         // Display the final results and exit
     }
-    return EXIT_SUCCESS;
+	
 }
