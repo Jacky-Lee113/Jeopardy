@@ -24,7 +24,6 @@ void tokenize(char *input, char **tokens);
 // Displays the game results for each player, their name and final score, ranked from first to last place
 void show_results(player *players, int num_players);
 
-
 int main(void)
 {
     // Input buffer and and commands
@@ -50,20 +49,25 @@ int main(void)
     }
 
     // Perform an infinite loop getting command input from users until game ends
-    while (true)
+    while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
     {
 		char *category;
 		char answer[BUFFER_LEN] = { 0 };
 		int value;
+		char active_player[BUFFER_LEN] = { 0 };
         // Call functions from the questions and players source files
-		display_categories();
-		printf("Please type a category (case sensitive)\n");
-		scanf("%s", category);
-		printf("Please select the dollar amount (without the $ symbol)\n");
-		scanf("%d", &value);
-		display_question(category, value);
-		printf("\nYour answer: ");
-		scanf("%s", answer);
+		printf("Who's turn is it?\n");
+		scanf("%s", active_player);
+		if (player_exists(players, num_players, active_player) > 0)	{
+			display_categories();
+			printf("Please type a category (case sensitive)\n");
+			scanf("%s", category);
+			printf("Please select the dollar amount (without the $ symbol)\n");
+			scanf("%d", &value);
+			display_question(category, value);
+			printf("\nYour answer: ");
+			scanf("%s", answer);
+		}
     }
 	
 }
