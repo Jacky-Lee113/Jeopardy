@@ -50,9 +50,9 @@ int main(void)
     }
 
     // Perform an infinite loop getting command input from users until game ends
-    while (fgets(buffer, BUFFER_LEN, stdin) != NULL)
+    while (true)
     {
-		char category[30];
+		char category[256];
 		int value;
         // Call functions from the questions and players source files
 		display_categories();
@@ -62,9 +62,6 @@ int main(void)
 		printf("Please select the dollar amount (without the $ symbol)\n");
 		scanf("%d", &value);
 		display_question(category, value);
-        // Execute the game until all questions are answered
-
-        // Display the final results and exit
     }
 	
 }
