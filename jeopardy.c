@@ -68,6 +68,9 @@ int main(void)
 			printf("\nYour answer: ");
 			scanf("%s", answer);
 		}
+		else {
+			printf("User is not validated, please ensure that the user exists. If user exists, ensure that name is case accurate\n");
+		}
     }
 	
 }

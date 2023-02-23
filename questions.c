@@ -21,7 +21,7 @@ void initialize_game(void)
 	questions[0].answered = false;
 	
 	strcpy(questions[1].category, "Biology");
-	strcpy(questions[1].question, "The femur (thigh bone) is stronger than concrete \n True or False?");
+	strcpy(questions[1].question, "The femur (thigh bone) is stronger than concrete \nTrue or False?");
 	strcpy(questions[1].answer, "true");
 	questions[1].value = 400;
 	questions[1].answered = false;
