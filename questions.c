@@ -38,26 +38,17 @@ void initialize_game(void)
 void display_categories(void)
 {
     // print categories and dollar values for each unanswered question in questions array
-	int width = 20;
-
-    for (int i = 0; i < 3; ++i) {
-		putchar('+');
-		for (int j = 0; j < width; ++j)
-			putchar('-');
-	}
-	printf("+\n");
-
-	for(int i = 0; i < 3; i++) 
-		printf("| %-*s", width - 1, categories[i]);
-	printf("|\n");
-
-	for (int i = 0; i < 3; ++i) {
-		putchar('+');
-		for (int j = 0; j < width; ++j)
-			putchar('-');
-	}
-	putchar('+');
-	printf("\n");
+	printf("+----------------------+----------------------+----------------------+\n");
+	printf("| Biology              | Punnyphrases         | Space                |\n");
+	printf("+----------------------+----------------------+----------------------+\n");
+	printf("| 200                  | 200                  | 200                  |\n");
+	printf("+----------------------+----------------------+----------------------+\n");
+	printf("| 400                  | 400                  | 400                  |\n");
+	printf("+----------------------+----------------------+----------------------+\n");
+	printf("| 600                  | 600                  | 600                  |\n");
+	printf("+----------------------+----------------------+----------------------+\n");
+	printf("| 800                  | 800                  | 800                  |\n");
+	printf("+----------------------+----------------------+----------------------+\n");
 }
 
 // Displays the question for the category and dollar value
