@@ -109,7 +109,13 @@ void display_categories(void)
 void display_question(char *category, int value)
 {
 	printf("%s for $%d! Question is: ", category, value);
-	printf("\n%s ", questions[0].question);
+	for (int i = 0; i < 12; i++) {
+		if (strcmp(category, questions[i].category) == 0) {
+			if (value == questions[i].value) {
+				printf("%s", questions[i].question);
+			}
+		}
+	}
 }
 
 // Returns true if the answer is correct for the question for that category and dollar value
