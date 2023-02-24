@@ -69,7 +69,9 @@ int main(void)
 				printf("\nYour answer: ");
 				scanf("%s", answer);
 				if (valid_answer(category, value, answer) > 0)	{
+					printf("\033[0;35m");
 					printf("Correct! %s has earned $%d!\n", active_player, value);
+					printf("\033[0m");
 					for(int i = 0; i < num_players; i++) {
 						if (strcmp(active_player, players[i].name) == 0)	{
 							players[i].score += value;
@@ -78,7 +80,9 @@ int main(void)
 				}
 			}
 			else	{
+				printf("\033[0;32m");
 				printf("Question has already been answered, choose another question\n");
+				printf("\033[0m");
 			}
 		}
 		else {

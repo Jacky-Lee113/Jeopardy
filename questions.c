@@ -92,17 +92,30 @@ void initialize_game(void)
 void display_categories(void)
 {
     // print categories and dollar values for each unanswered question in questions array
-	printf("+----------------------+----------------------+----------------------+\n");
-	printf("| %s              | %s         | %s                |\n", categories[0], categories[1], categories[2]);
-	printf("+----------------------+----------------------+----------------------+\n");
-	printf("| $%d                 | $%d                 | $%d                 |\n", questions[0].value, questions[4].value, questions[8].value);
-	printf("+----------------------+----------------------+----------------------+\n");
-	printf("| $%d                 | $%d                 | $%d                 |\n", questions[1].value, questions[5].value, questions[9].value);
-	printf("+----------------------+----------------------+----------------------+\n");
-	printf("| $%d                 | $%d                 | $%d                 |\n", questions[2].value, questions[6].value, questions[10].value);
-	printf("+----------------------+----------------------+----------------------+\n");	
-	printf("| $%d                 | $%d                 | $%d                 |\n", questions[3].value, questions[7].value, questions[11].value);
-	printf("+----------------------+----------------------+----------------------+\n");
+	printf("\033[0;33m"); 
+	printf("+----------------------+------------------------+-----------------------+\n");
+	printf("|  ______   _____   _____   _____   _____   _____     ____    _      _ |\n");
+	printf("| |______| | ____| |  _  | |  _  | |  _  | |  _  \\   |  _ \\  \\ \\    / /|\n");
+	printf("|    | |   | |__   | | | | | |_| | | | | | | | |  |  | | | |  \\ \\  / / |\n");
+	printf("| _  | |   |  __|  | | | | | ____| | |_| | | |_| /   | | | |   \\ \\/ /  |\n");
+	printf("|| |_| |   | |___  | |_| | | |     | | | | | | | |_  | |_| |    |  |   |\n");
+	printf("||_____|   |_____| |_____| |_|     |_| |_| |_| |___| |____/     |__|   |\n");
+	printf("|                                                                      |\n");
+	printf("+-----------------------+-----------------------+----------------------+\n");
+	printf("\033[0m");
+	printf("\033[0;34m"); 
+	printf("+-----------------------+-----------------------+----------------------+\n");
+	printf("| %s               | %s          | %s                |\n", categories[0], categories[1], categories[2]);
+	printf("+-----------------------+-----------------------+----------------------+\n");
+	printf("| $%d                  | $%d                  | $%d                 |\n", questions[0].value, questions[4].value, questions[8].value);
+	printf("+-----------------------+-----------------------+----------------------+\n");
+	printf("| $%d                  | $%d                  | $%d                 |\n", questions[1].value, questions[5].value, questions[9].value);
+	printf("+-----------------------+-----------------------+----------------------+\n");
+	printf("| $%d                  | $%d                  | $%d                 |\n", questions[2].value, questions[6].value, questions[10].value);
+	printf("+-----------------------+-----------------------+----------------------+\n");	
+	printf("| $%d                  | $%d                  | $%d                 |\n", questions[3].value, questions[7].value, questions[11].value);
+	printf("+-----------------------+-----------------------+----------------------+\n");
+	printf("\033[0m");
 }
 
 // Displays the question for the category and dollar value
@@ -112,7 +125,9 @@ void display_question(char *category, int value)
 	for (int i = 0; i < 12; i++) {
 		if (strcmp(category, questions[i].category) == 0) {
 			if (value == questions[i].value) {
+				printf("\033[0;31m"); 
 				printf("%s", questions[i].question);
+				printf("\033[0m");
 			}
 		}
 	}
@@ -126,6 +141,8 @@ bool valid_answer(char *category, int value, char *answer)
 		if (strcmp(category, questions[i].category) == 0) {
 			if (value == questions[i].value) {
 				if(strcmp(questions[i].answer, answer) == 0)	{
+					char buffer[4] = "    ";
+					questions[i].value == buffer[4];
 					questions[i].answered = true;
 					return true;
 				}
@@ -144,8 +161,12 @@ bool already_answered(char *category, int value)
 {
     // lookup the question and see if it's already been marked as answered
 	for (int i = 0; i < 12; i++) {
-		if (questions[i].answered == 1) {
-			return true;
+		if (strcmp(category, questions[i].category) == 0) {
+			if (value == questions[i].value) {
+				if (questions[i].answered == 1) {
+					return true;
+				}
+			}
 		}
 	}
     return false;
