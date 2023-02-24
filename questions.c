@@ -122,7 +122,17 @@ void display_question(char *category, int value)
 bool valid_answer(char *category, int value, char *answer)
 {
     // Look into string comparison functions
-    return false;
+	for (int i = 0; i < 12; i++) {
+		if (strcmp(category, questions[i].category) == 0) {
+			if (value == questions[i].value) {
+				if(strcmp(questions[i].answer, answer) == 0)	{
+					return true;
+				}
+				printf("Nice try! Correct answer is: %s\n", questions[i].answer);
+			}
+		}
+	}
+	return false;
 }
 
 // Returns true if the question has already been answered

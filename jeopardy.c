@@ -67,6 +67,14 @@ int main(void)
 			display_question(category, value);
 			printf("\nYour answer: ");
 			scanf("%s", answer);
+			if (valid_answer(category, value, answer) > 0)	{
+				printf("Correct! %s has earned $%d!\n", active_player, value);
+				for(int i = 0; i < num_players; i++) {
+					if (strcmp(active_player, players[i].name) == 0)	{
+						players[i].score += value;
+					}
+				}
+			}
 		}
 		else {
 			printf("User is not validated, please ensure that the user exists. If user exists, ensure that name is case accurate\n");
