@@ -32,7 +32,7 @@ void initialize_game(void)
 	questions[1].answered = false;
 	
 	strcpy(questions[2].category, "Biology");
-	strcpy(questions[2].question, "The surface area of human lungs have an approximate size of what sport field/court?");
+	strcpy(questions[2].question, "The surface area of human lungs have an approximate size of what sport field/court? Hint: Answer contains 2 words");
 	strcpy(questions[2].answer, "tennis court");
 	strcpy(questions[2].buffer, "600");
 	questions[2].value = 600;
