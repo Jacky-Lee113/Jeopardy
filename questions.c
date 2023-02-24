@@ -126,9 +126,13 @@ bool valid_answer(char *category, int value, char *answer)
 		if (strcmp(category, questions[i].category) == 0) {
 			if (value == questions[i].value) {
 				if(strcmp(questions[i].answer, answer) == 0)	{
+					questions[i].answered = true;
 					return true;
 				}
+				else	{
 				printf("Nice try! Correct answer is: %s\n", questions[i].answer);
+				questions[i].answered = true;
+				}
 			}
 		}
 	}
@@ -139,5 +143,10 @@ bool valid_answer(char *category, int value, char *answer)
 bool already_answered(char *category, int value)
 {
     // lookup the question and see if it's already been marked as answered
+	for (int i = 0; i < 12; i++) {
+		if (questions[i].answered == 1) {
+			return true;
+		}
+	}
     return false;
 }
