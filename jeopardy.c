@@ -41,6 +41,7 @@ void tokenize(char *input, char **tokens) {
 
 // Displays the game results for each player, their name and final score, ranked from first to last place
 void show_results(player *players, int num_players) {
+  char name[300];
   printf("\033[0;33m"); 
   printf("+----------------------+------------------------+----------------------+\n");
   printf("|  ______   _____   _____   _____   _____   _____     ____    _      _ |\n");
@@ -58,18 +59,21 @@ void show_results(player *players, int num_players) {
   for (i = 1; i < num_players; i++) 
   {
     key = players[i].score;
+    strcpy(name, players[i].name);
     j = i - 1;
 
     while (j >= 0 && players[j].score > key) 
     {
       players[j + 1].score = players[j].score;
+      strcpy(players[j + 1].name, players[j].name);
       j = j - 1;
     }
     players[j + 1].score = key;
+    strcpy(players[j + 1].name, name);
   }
 
   // display
-  for(int i = 0;i < num_players;i++) {
+  for(int i = num_players - 1;i >= 0;i--) {
     printf("| %-10s        %30d                     |\n", players[i].name, players[i].score);
   }
   printf("+----------------------+------------------------+----------------------+\n");
@@ -101,8 +105,7 @@ int main(void)
   // an array of players
   player players[num_players];
 
-  /* Use this to test the show results
-    
+/*    
   strcpy(players[0].name, "Rui");
   strcpy(players[1].name, "Jacky");
   strcpy(players[2].name, "Nate");
@@ -132,8 +135,12 @@ int main(void)
     char active_player[BUFFER_LEN] = { 0 };
 
     // Call functions from the questions and players source files
-    printf("Who's turn is it?\n");
+    printf("Who's turn is it? (or quit to leave)\n");
     scanf("%s", active_player);
+    if (strcmp(active_player, "quit") == 0) {
+      show_results(players, num_players);
+      exit(0);
+    }
     if (player_exists(players, num_players, active_player) > 0)	{
       display_categories();
       printf("Please type a category (case sensitive) or quit\n");
