@@ -8,7 +8,7 @@ EXE = jeopardy.exe
 .PHONY: clean help
 
 jeopardy : jeopardy.o questions.o players.o
-	$(CC) $(CFLAGS) $^ $(LIBS) -o $@ 
+	$(CC) -g $(CFLAGS) $^ $(LIBS) -o $@ 
 
 jeopardy.exe : jeopardy.o questions.o players.o
 	$(CC) $(CFLAGS) $^ $(LIBS) -o $@ 
